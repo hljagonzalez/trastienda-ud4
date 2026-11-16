@@ -1,0 +1,15 @@
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #7c2d12; /* Marrón cálido / editorial */
+  line-height: 1.5;
+}
+
+header {
+  background-color: #fef08a; /* Amarillo suave: se nota al instante en el proyector */
+  padding: 1rem;
+}
+
+a {
+  color: #be123c; /* Granate / carmesí para enlaces */
+  text-decoration: none;
+}
