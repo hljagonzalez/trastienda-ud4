@@ -13,3 +13,48 @@ a {
   color: #be123c; /* Granate / carmesí para enlaces */
   text-decoration: none;
 }
+
+/* 1. Pestaña activa: color primario y negrita */
+nav a[aria-current="page"] {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* 2. Resto de enlaces de la barra: gris, hover y focus-visible */
+nav a:not([aria-current="page"]) {
+  color: #64748b;
+}
+
+nav a:hover {
+  color: #1e293b;
+}
+
+nav a:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* 3. Tarjetas y primera tarjeta con h2 + .card */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+h2 + .card {
+  border-top: 2px solid #2563eb;
+}
+
+/* 4. Badges: ocultar vacíos con :empty y resaltar tarjeta con :has() */
+.badge:empty {
+  display: none;
+}
+
+article:has(.badge:not(:empty)) {
+  border-color: #2563eb;
+}
+
+/* 5. Botones de solo icono */
+button[aria-label] {
+  font-size: 1.25rem;
+  cursor: pointer;
+}
