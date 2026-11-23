@@ -2,6 +2,18 @@
    1. Tokens de diseño en :root y variables semánticas
    ========================================================================== */
 :root {
+  /* --- Tipografía y Escala Tipográfica (Figma) --- */
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --text-xs:   0.75rem;   /* Caption (12 px) */
+  --text-sm:   0.875rem;  /* Body Small (14 px) */
+  --text-base: 1rem;      /* Body (16 px) */
+  --text-lg:   1.125rem;  /* H3 (18 px) */
+  --text-xl:   1.25rem;   /* H2 (20 px) */
+  --text-2xl:  1.5rem;    /* H1 (24 px) */
+  --text-3xl:  1.875rem;  /* Display (30 px) */
+
   /* --- Escala primaria (Figma) --- */
   --color-primary-50:  #eff6ff;
   --color-primary-100: #dbeafe;
@@ -35,18 +47,42 @@
   --brand:          var(--color-primary-500);
   --brand-hover:    var(--color-primary-600);
 
-  /* --- 2. Experimento con oklch(): badge de acento --- */
+  /* --- Experimento con oklch(): badge de acento --- */
   --color-accent-oklch: oklch(0.65 0.20 260);
 }
 
 /* ==========================================================================
-   Estilos base
+   2. Estilos base y tipografía
    ========================================================================== */
 body {
-  font-family: Georgia, "Times New Roman", serif;
-  background-color: var(--bg-page);
-  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
   line-height: 1.5;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  min-height: 100dvh; /* Altura móvil completa */
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--text-2xl);
+}
+
+h2 {
+  font-size: var(--text-xl);
+}
+
+h3 {
+  font-size: var(--text-lg);
+}
+
+p {
+  max-width: 65ch; /* Longitud de lectura ergonómica */
 }
 
 header {
@@ -74,6 +110,7 @@ nav {
 
   a {
     color: var(--text-muted);
+    font-size: var(--text-sm);
     text-decoration: none;
 
     &[aria-current="page"] {
@@ -109,10 +146,12 @@ article.card {
   }
 
   p {
+    font-size: var(--text-sm);
     color: var(--text-muted);
   }
 
   button {
+    font-size: var(--text-sm);
     background-color: var(--brand);
     color: #ffffff;
     border: none;
@@ -124,6 +163,7 @@ article.card {
   }
 
   .badge {
+    font-size: var(--text-xs);
     background-color: var(--color-accent-oklch);
     color: #ffffff;
 
