@@ -48,7 +48,16 @@
   --brand-hover: var(--color-primary-600);
 
   /* --- Experimento con oklch(): badge de acento --- */
-  --color-accent-oklch: oklch(0.65 0.2 260);
+  --color-accent-oklch: oklch(0.50 0.2 260);
+
+  /* Radios de esquina */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Sombras de elevación */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 /* ==========================================================================
@@ -57,6 +66,13 @@
 *,*::before,*::after {
   box-sizing: border-box;
 }
+
+img, picture, svg { 
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+}
+
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -143,8 +159,23 @@ nav {
 .card {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   padding: 1rem;
   margin-block-end: 1rem;
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-cover {
+    width: 120px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    object-position: center top;
+    background-color: var(--color-neutral-100);
+  }
 
   .card-title {
     color: var(--text-main);
@@ -171,19 +202,30 @@ nav {
     background-color: var(--brand);
     color: #ffffff;
     border: none;
+    border-radius: var(--radius-md);
     cursor: pointer;
     display: inline-block;
     padding: 0.75rem 1rem; /*padding vertical y horizontal que garantice un área táctil mínima de 44 px de altura para dedos en móviles*/
     min-height: 44px;
+
     &:hover {
       background-color: var(--brand-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
     }
   }
 
   .badge {
     font-size: var(--text-xs);
-    background-color: var(--color-accent-oklch);
+    background-image: linear-gradient(to right, var(--color-accent-oklch), var(--brand));
     color: #ffffff;
+    border-radius: 9999px; /* Pill shape */
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin-block-end: 0.5rem;
 
     &:empty {
       display: none;
@@ -199,8 +241,30 @@ h2 + .card {
   border-top: 2px solid var(--brand);
 }
 
-/* 5. Botones de solo icono */
+/* 5. Iconos y botones de solo icono */
+.icon {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  vertical-align: middle;
+}
+
 button[aria-label] {
   font-size: 1.25rem;
   cursor: pointer;
+  background: transparent;
+  border: 0;
+  color: var(--text-main);
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+
+  &:hover {
+    color: var(--brand);
+    background-color: var(--color-neutral-100);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
 }
